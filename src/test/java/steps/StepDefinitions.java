@@ -60,6 +60,7 @@ public class StepDefinitions {
 
     @Given("^Open online calculator application$")
     public void launchOnlineCalculator() {
+    	System.out.println("Launching Online Calculator.");
         driver.get("https://www.online-calculator.com/full-screen-calculator/");
     }
 
@@ -76,6 +77,7 @@ public class StepDefinitions {
                 .sendKeys(rows.get("value2"))
                 .sendKeys(Keys.ENTER)
                 .build();
+        System.out.println("Performing " + rows.get("operator") + " operation on values: " + rows.get("value1") + " and " + rows.get("value2"));
         action.perform();
     }
     
@@ -84,6 +86,8 @@ public class StepDefinitions {
     	driver.switchTo().frame("fullframe");
         wait.until(ExpectedConditions.presenceOfElementLocated(By.id("canvas")));
         Map<String, String> rows = dataTable.asMap(String.class, String.class);
+        
+        System.out.println("Performing the operation/s " + rows.get("operators") + " on numbers " + rows.get("values"));
         
         String[] values = rows.get("values").split(",");
         String[] operators = rows.get("operators").split(",");
@@ -107,6 +111,7 @@ public class StepDefinitions {
         Map<String, String> expectedRow = dataTable.asMap(String.class, String.class);
         JavascriptExecutor js = (JavascriptExecutor) driver;
         String actualValue = js.executeScript("return exportRoot.showscreen_txt.text").toString();
+        System.out.println("Verifying if actual value: " + actualValue + " is equal to expected value: " + expectedRow.get("expected"));
         Assert.assertEquals(expectedRow.get("expected"), actualValue);
     }
 

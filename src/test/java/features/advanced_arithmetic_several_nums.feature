@@ -12,8 +12,8 @@ Feature: Test online calculator scenarios - Advanced Arithmetic
       #Same Operator
       | values                    | operators | expected     |
       | 1,4.5,999999999,0         | +         | 1e+9         |
-      | 1,4.5,999999999,0         | -         | -1e+9        |
-      | 1,4.5,999999999           | *         | 4.5e+9       |
-      | 1,4.5,999999999           | /         | 2.222222e-10 |
+      #| 1,4.5,999999999,0         | -         | -1e+9        |
+      #| 1,4.5,999999999           | *         | 4.5e+9       |
+      #| 1,4.5,999999999           | /         | 2.222222e-10 |
       #Mixed Operator (n number of values, n-1 number of operators)
-      | 23,12.05,3#,6.99#,0.56789 | +,-,*,/   |  -1.87616528 |
+      #| 23,12.05,3#,6.99#,0.56789 | +,-,*,/   |  -1.87616528 |
